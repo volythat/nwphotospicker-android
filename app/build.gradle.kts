@@ -38,7 +38,32 @@ android {
     }
     buildFeatures.viewBinding = true
 }
-
+publishing {
+    repositories {
+        maven {
+            // change to point to your repo, e.g. http://my.org/repo
+            url = uri("com.github.volythat")
+        }
+    }
+    publications {
+        register("mavenJava", MavenPublication::class) {
+            artifact("nwphotospicker")
+        }
+    }
+}
+//afterEvaluate {
+//    publishing {
+//        publications {
+//            // Creates a Maven publication called "release".
+//            release(MavenPublication) {
+//                from(components.release)
+//                groupId("com.github.volythat")
+//                artifactId("nwbilling")
+//                version("1.0.0")
+//            }
+//        }
+//    }
+//}
 dependencies {
 
     implementation("androidx.core:core-ktx:1.12.0")
