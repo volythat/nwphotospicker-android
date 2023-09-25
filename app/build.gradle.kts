@@ -1,6 +1,9 @@
+import io.grpc.internal.SharedResourceHolder.release
+
 plugins {
     id("com.android.application")
     id("org.jetbrains.kotlin.android")
+    id("maven-publish")
 }
 
 android {
