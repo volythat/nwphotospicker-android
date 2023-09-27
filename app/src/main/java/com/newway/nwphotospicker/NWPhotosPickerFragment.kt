@@ -18,6 +18,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.FrameLayout
+import android.widget.Toast
 import androidx.activity.result.ActivityResult
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.core.content.FileProvider
@@ -41,6 +42,7 @@ import com.newway.nwphotospicker.model.NWPhotoDirectory
 import com.newway.nwphotospicker.viewmodel.NWPhotosPickerViewModel
 import java.io.File
 import java.io.IOException
+import java.lang.Exception
 import java.util.concurrent.TimeUnit
 
 
@@ -187,7 +189,11 @@ class NWPhotosPickerFragment : BottomSheetDialogFragment() {
             }
 
             override fun onClickCamera() {
-                openCamera()
+                try {
+                    openCamera()
+                }catch(e:Exception){
+                    Toast.makeText(context,"Permission denied!",Toast.LENGTH_SHORT).show()
+                }
             }
         }
     }
