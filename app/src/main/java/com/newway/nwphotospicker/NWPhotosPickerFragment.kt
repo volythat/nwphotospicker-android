@@ -45,7 +45,6 @@ import java.util.concurrent.TimeUnit
 
 
 interface NWPhotosPickerDialogInterface {
-    fun onCameraSelected()
     fun onDismissWithImages(images: List<Uri>)
 }
 

@@ -45,9 +45,6 @@ class MainActivity : AppCompatActivity() {
             requestPermissionsApp {
                 val dialog = NWPhotosPickerFragment.newInstance(true,5)
                 dialog.listener = object : NWPhotosPickerDialogInterface {
-                    override fun onCameraSelected() {
-
-                    }
 
                     override fun onDismissWithImages(images: List<Uri>) {
                         images.forEach {
