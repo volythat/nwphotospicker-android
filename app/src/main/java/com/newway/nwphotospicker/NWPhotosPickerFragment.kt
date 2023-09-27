@@ -53,10 +53,11 @@ interface NWPhotosPickerDialogInterface {
 class NWPhotosPickerFragment : BottomSheetDialogFragment() {
 
     companion object {
-        fun newInstance(isShowCamera:Boolean,maxSelect:Int) : NWPhotosPickerFragment {
+        fun newInstance(isShowCamera:Boolean,maxSelect:Int,bundleId:String) : NWPhotosPickerFragment {
             val dialog = NWPhotosPickerFragment()
             dialog.isShowCamera = isShowCamera
             dialog.maxSelect = maxSelect
+            dialog.bundleId = bundleId
             return dialog
         }
     }
@@ -71,6 +72,7 @@ class NWPhotosPickerFragment : BottomSheetDialogFragment() {
     private var isShowFolderView : Boolean = false
     private var maxSelect : Int = 1
     private var isShowCamera : Boolean = true
+    private var bundleId : String = ""
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -222,7 +224,7 @@ class NWPhotosPickerFragment : BottomSheetDialogFragment() {
                 val cameraIntent = Intent(MediaStore.ACTION_IMAGE_CAPTURE)
                 val photoURI: Uri = FileProvider.getUriForFile(
                     ctx,
-                    "com.newway.nwphotospicker.provider",
+                    "$bundleId.provider",
                     file
                 )
                 cameraIntent.putExtra(MediaStore.EXTRA_OUTPUT,photoURI)
